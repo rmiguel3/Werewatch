@@ -1,17 +1,10 @@
 import React from "react";
-import { streamingServices } from "../public/streamingServices";
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Link,
-    useNavigate,
-    Outlet,
-} from "react-router-dom";
+import { streamingServices } from "./streamingServices";
+import {useNavigate} from "react-router-dom";
 
-export default function App() {
-
+const App = () => {
   const [selected, setSelected] = React.useState([]);
+  const navigate = useNavigate(); // Move useNavigate here
 
   const toggleService = (name) => {
     setSelected((prev) =>
@@ -22,12 +15,8 @@ export default function App() {
   };
 
   const handleSubmit = () => {
-    // Example: send selected to next page via localStorage
     localStorage.setItem("selectedServices", JSON.stringify(selected));
-    // Navigate to next page 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const navigate = useNavigate();
-    navigate("/next-page"); 
+    navigate("/homePage"); // Navigate to HomePage after submission
   };
 
   return (
@@ -88,3 +77,4 @@ export default function App() {
     </div>
   );
 }
+export default App;
