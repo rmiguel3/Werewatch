@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "./App";
-import HomePage from "./homePage";
+import StreamSelector from "./pages/streamSelector";
+import HomePage from "./pages/home";
 import "./index.css";
 
 
@@ -11,7 +11,7 @@ const root = createRoot(rootElement);
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<StreamSelector />} />
       <Route path="/homePage" element={<HomePage />} />
     </Routes>
   </BrowserRouter>,

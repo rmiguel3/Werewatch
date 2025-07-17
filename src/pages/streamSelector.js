@@ -1,10 +1,10 @@
 import React from "react";
-import { streamingServices } from "./streamingServices";
+import { streamingServices } from "../utils/streamingServices";
 import {useNavigate} from "react-router-dom";
 
-const App = () => {
+const StreamSelector = () => {
   const [selected, setSelected] = React.useState([]);
-  const navigate = useNavigate(); // Move useNavigate here
+  const navigate = useNavigate();
 
   const toggleService = (name) => {
     setSelected((prev) =>
@@ -77,4 +77,4 @@ const App = () => {
     </div>
   );
 }
-export default App;
+export default StreamSelector;
