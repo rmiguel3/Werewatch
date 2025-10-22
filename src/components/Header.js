@@ -2,14 +2,15 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header className="text-4x mb-8 bg-gray-500 text-white p-4 rounded-full shadow-xl">
+    <header className="text-4x mb-8 bg-red text-white p-4 rounded-lg h-fill">
         <nav className="flex p-4 space-x-20">
-          <img src="./logo.png" alt="" className="h-10 w-96 object-cover" ></img>
+          <a href= '/'><img src="./logo.png" alt="Werewatch logo" className="h-10 w-86 object-cover" /></a>
           {[
-            ['Home', '/homePage'],
+            ['Home', '/'],
             ['Genres', '/genres'],
-            ['About', '/about'],
-            ['Contact', '/contact'],
+            ['Search', '/search'],
+            ['Streamers', '/streamers'],
+            ['Watchlist', '/watchlist'],
           ].map(([title, url]) => (
             <a href={url} className="font-bold text-2xl">{title}</a>
           ))}
