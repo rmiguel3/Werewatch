@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import React, { useEffect, useState } from "react";
+import MovieCard from "../components/MovieCard";
 
 
 const HomePage = () => {
@@ -7,9 +7,10 @@ const HomePage = () => {
   return (
     <div className="min-h-screen w-full p-8 flex flex-col bg-black">
       <Header />
-      <main className="flex-1 flex items-center justify-center flex-col">
-        <h1 className="text-4xl text-white mb-4">Welcome to the Home Page</h1>
-      </main>
+      <ul className="overflow-auto-x flex-1 flex items-center justify-center flex-row space-x-6 no-scrollbar">
+        <MovieCard />
+        <MovieCard />
+      </ul>
     </div>
   );
 };
