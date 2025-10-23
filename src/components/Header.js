@@ -2,19 +2,20 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header className="text-4x mb-8 bg-red text-white p-4 rounded-lg h-fill">
-        <nav className="flex p-4 space-x-20">
-          <a href= '/'><img src="./logo.png" alt="Werewatch logo" className="h-10 w-86 object-cover" /></a>
-          {[
-            ['Home', '/'],
-            ['Genres', '/genres'],
-            ['Search', '/search'],
-            ['Streamers', '/streamers'],
-            ['Watchlist', '/watchlist'],
-          ].map(([title, url]) => (
-            <a href={url} className="font-bold text-2xl">{title}</a>
-          ))}
-        </nav>
+    <header className="site-header">
+      <nav className="nav">
+        <a href="/" className="logo-link">
+          <img src="/logo.png" alt="Werewatch logo" className="logo-image" />
+        </a>
+
+        <div className="nav-links" role="navigation" aria-label="main">
+          <a href="/" className="nav-link">Home</a>
+          <a href="/genres" className="nav-link">Genres</a>
+          <a href="/search" className="nav-link">Search</a>
+          <a href="/streamers" className="nav-link">Streamers</a>
+          <a href="/watchlist" className="nav-link">Watchlist</a>
+        </div>
+      </nav>
     </header>
   );
 };

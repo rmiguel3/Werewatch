@@ -1,16 +1,18 @@
 import Header from "../components/Header";
-import MovieCard from "../components/MovieCard";
-
+import MovieRow from "../components/MovieRow";
+import {moviesArr} from "../utils/movies.js";
 
 const HomePage = () => {
 
   return (
-    <div className="min-h-screen w-full p-8 flex flex-col bg-black">
+    <div className="app-container">
       <Header />
-      <ul className="overflow-auto-x flex-1 flex items-center justify-center flex-row space-x-6 no-scrollbar">
-        <MovieCard />
-        <MovieCard />
-      </ul>
+      <main className="main-content">
+        <MovieRow movies={moviesArr} />
+        <MovieRow movies={moviesArr} />
+        <MovieRow movies={moviesArr} />
+        <MovieRow movies={moviesArr} />
+      </main>
     </div>
   );
 };
