@@ -30,7 +30,7 @@ export default function MovieRow({genre, genreName, providers }){
         setLoading(true);
 
         // Join multiple provider IDs with commas (e.g., "8,119,15")
-        const providerParam = providers.join(',');
+        const providerParam = providers.join('|');
 
         const url = `https://api.themoviedb.org/3/discover/movie?` +
         `api_key=${TMDB_API_KEY}` +
@@ -43,10 +43,12 @@ export default function MovieRow({genre, genreName, providers }){
 
         const res = await fetch(url);
         const data = await res.json();
+        console.log(data.results);
         setMovies(data.results || []);
         setLoading(false);
     }
 
+    // Scroll functions
     const slideLeft = () => {
         const slider = sliderRef.current;
         if (!slider) return;

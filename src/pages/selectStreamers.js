@@ -12,21 +12,23 @@ export default function SelectStreamers(){
     const [baseImagePath, setBaseImagePath] = useState("");
     const [selectedProviders, setSelectedProviders] = useState([]);
 
-    const handleSubmit = () => {
-        const data = {
-            providers: selectedProviders
+        const handleSubmit = () => {
+            // Save only provider IDs (numbers)
+            const data = {
+                providers: selectedProviders,
+                timestamp: new Date().toISOString(),
+            };
+            localStorage.setItem('selectedProviders', JSON.stringify(data));
+            navigate('/home');
         };
-        localStorage.setItem('selectedProviders', JSON.stringify(data));
-        navigate('/home');
-    };
 
-  const toggleService = (providerName) => {
-    setSelectedProviders((prev) =>
-      prev.includes(providerName)
-        ? prev.filter((n) => n !== providerName)
-        : [...prev, providerName]
-    );
-  };
+    const toggleService = (providerId) => {
+        setSelectedProviders((prev) =>
+            prev.includes(providerId)
+                ? prev.filter((n) => n !== providerId)
+                : [...prev, providerId]
+        );
+    };
 
     // 🔹 Fetch providers and base image path on mount
     useEffect(() => {
@@ -59,8 +61,8 @@ export default function SelectStreamers(){
                 {providers.map((p) => (
                     <div 
                         key={p.provider_id} 
-                        className={`provider-item ${selectedProviders.includes(p.provider_name) ? 'selected' : ''}`}
-                        onClick={() => toggleService(p.provider_name)}
+                        className={`provider-item ${selectedProviders.includes(p.provider_id) ? 'selected' : ''}`}
+                        onClick={() => toggleService(p.provider_id)}
                     >
                         <div className='provider-image-wrapper'>
                             <img 
@@ -68,7 +70,7 @@ export default function SelectStreamers(){
                                 alt={`${p.provider_name} logo`}
                                 className='provider-logo'
                             />
-                            {selectedProviders.includes(p.provider_name) && (
+                            {selectedProviders.includes(p.provider_id) && (
                                 <span className='provider-check'>
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <circle cx="12" cy="12" r="12" fill="#2563eb" />
