@@ -17,7 +17,13 @@ export default function HomePage() {
       if (raw) {
         const parsed = JSON.parse(raw);
         if (parsed && Array.isArray(parsed.providers)) {
-          setUserSelectedProviders(parsed.providers);
+          // support both old shape [{id,name},...] and new shape [id, id, ...]
+          const items = parsed.providers;
+          if (items.length > 0 && typeof items[0] === 'object' && items[0] !== null && 'id' in items[0]) {
+            setUserSelectedProviders(items.map((p) => p.id));
+          } else {
+            setUserSelectedProviders(items);
+          }
         }
       }
     } catch (e) {
@@ -43,7 +49,7 @@ export default function HomePage() {
               <MovieRow 
                 genre={genre.id} 
                 genreName={genre.name}
-                providers={userSelectedProviders.length > 0 ? userSelectedProviders.map(p => p.id) : []} 
+                providers={userSelectedProviders} 
               />
             </div>
         ))}
