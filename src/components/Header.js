@@ -9,7 +9,7 @@ const Header = () => {
         </a>
 
         <div className="nav-links" role="navigation" aria-label="main">
-          <a href="/" className="nav-link">Home</a>
+          <a href="/home" className="nav-link">Home</a>
           <a href="/genres" className="nav-link">Genres</a>
           <a href="/search" className="nav-link">Search</a>
           <a href="/streamers" className="nav-link">Streamers</a>

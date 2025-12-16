@@ -38,6 +38,76 @@ body{
   object-fit:contain;
 }
 
+/* Logo Grid Layout */
+.logo-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--gap);
+  margin-bottom: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+/* Provider Item */
+.provider-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 16px;
+  border-radius: 12px;
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+.provider-item:hover{
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: scale(1.05);
+}
+.provider-item.selected{
+  background-color: rgba(37, 99, 235, 0.2);
+  border: 2px solid #2563eb;
+}
+
+/* Provider Image Wrapper */
+.provider-image-wrapper{
+  position: relative;
+  width: 92px;
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.provider-logo{
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Checkmark Indicator */
+.provider-check{
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #2563eb;
+}
+.provider-check svg{
+  width: 24px;
+  height: 24px;
+}
+
+/* Select Streamers Title */
+.select-streamers-title{
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+
 /* Nav links */
 .nav-links{
   display:flex;
@@ -107,6 +177,53 @@ body{
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
+}
+
+/* Submit Container */
+.submit-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 20px 0;
+}
+
+/* Submit Button */
+.submit-button{
+  padding: 12px 32px;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 36px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+.submit-button:hover:not(:disabled){
+  background: #c73d3d;
+  transform: scale(1.05);
+}
+.submit-button:active:not(:disabled){
+  transform: scale(0.98);
+}
+.submit-button:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Selected providers chips on Home page */
+.provider-chip{
+  display:inline-block;
+  background:#eef2ff;
+  color:#111827;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.selected-providers-bar h3{
+  color: #cbd5e1;
 }
 
 .movie-row__nav--right{

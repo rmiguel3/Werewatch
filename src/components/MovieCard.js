@@ -1,4 +1,4 @@
-export default function MovieCard({ title = "Wolfman", image = "/wolfman.jpg" }) {
+export default function MovieCard({ title, image }) {
   return (
     <div className="movie-card">
       <img
