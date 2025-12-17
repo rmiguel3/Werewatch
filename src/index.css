@@ -276,6 +276,36 @@ body{
   font-weight:600;
 }
 
+
+/* Movie Details Page */
+.movie-details-page{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-details-image-and-title{
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px;
+}
+
+.movie-details{
+  flex:1;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.movie-details-text{
+  margin-left: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
 /* Responsive tweaks */
 @media (max-width:600px){
   .movie-card{ width: 200px; padding:12px }

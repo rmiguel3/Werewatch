@@ -29,7 +29,7 @@ export default function MovieRow({genre, genreName, providers }){
         if (!genre || !providers || providers.length === 0) return;
         setLoading(true);
 
-        // Join multiple provider IDs with commas (e.g., "8,119,15")
+        // Join multiple provider IDs with pipes (e.g., "8|119|15")
         const providerParam = providers.join('|');
 
         const url = `https://api.themoviedb.org/3/discover/movie?` +
@@ -43,7 +43,6 @@ export default function MovieRow({genre, genreName, providers }){
 
         const res = await fetch(url);
         const data = await res.json();
-        console.log(data.results);
         setMovies(data.results || []);
         setLoading(false);
     }
@@ -70,16 +69,16 @@ export default function MovieRow({genre, genreName, providers }){
                 <div className="movie-row-wrapper">
                     <MdChevronLeft onClick={slideLeft} className="movie-row__nav--left" />
                     <div ref={sliderRef} className="movie-row no-scrollbar" role="list">
-                        {movies.map((m, i) => {
+                        {movies.map((movie, i) => {
                             // Construct full image URL with fallback for missing posters
-                            const imageUrl = m.poster_path 
-                                ? `${baseImagePath}w500${m.poster_path}` 
+                            const imageUrl = movie.poster_path 
+                                ? `${baseImagePath}w500${movie.poster_path}` 
                                 : "https://via.placeholder.com/500x750?text=No+Image";
                             
                             return (
                                 <div key={i} role="listitem" className="movie-row__item">
                                     <MovieCard 
-                                        title={m.title || "Unknown Title"} 
+                                        movie={movie} 
                                         image={imageUrl} 
                                     />
                                 </div>
